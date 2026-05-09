@@ -37,10 +37,10 @@
     const tableBody = document.getElementById("carsTableBody");
     const submitBtn = document.getElementById("submitBtn");
     
-    // We'll use this variable to track if we are currently updating a car
+   
     let editingCarId = null;
 
-    // Load and display cars
+
     async function loadCars() {
       const response = await fetch("/api/cars");
       const cars = await response.json();
@@ -50,7 +50,7 @@
       cars.forEach(car => {
         const row = document.createElement("tr");
 
-        // Reordered the data to match the new headers and added action buttons
+      
         row.innerHTML = `
           <td>${car.brand}</td>
           <td>${car.year}</td>
@@ -66,32 +66,32 @@
       });
     }
 
-    // DELETE logic
+  
     async function deleteCar(id) {
       await fetch(`/api/cars/${id}`, {
         method: "DELETE"
       });
-      // Refresh the table after deleting
+    
       loadCars();
     }
 
-    // UPDATE setup logic: fetches the specific car and populates the form
+  
     async function setupUpdate(id) {
       const response = await fetch(`/api/cars/${id}`);
       const car = await response.json();
 
-      // Populate form fields
+      
       document.getElementById("brand").value = car.brand;
       document.getElementById("make").value = car.make;
       document.getElementById("year").value = car.year;
       document.getElementById("color").value = car.color;
 
-      // Set state to editing mode
+  
       editingCarId = id;
       submitBtn.textContent = "Update Car";
     }
 
-    // Handle form submission for BOTH Adding and Updating
+   
     form.addEventListener("submit", async event => {
       event.preventDefault();
 
@@ -103,7 +103,7 @@
       };
 
       if (editingCarId) {
-        // We are in UPDATE mode -> Send PUT request
+  
         await fetch(`/api/cars/${editingCarId}`, {
           method: "PUT",
           headers: {
@@ -112,11 +112,11 @@
           body: JSON.stringify(carData)
         });
         
-        // Reset state back to Add mode
+       
         editingCarId = null;
         submitBtn.textContent = "Add Car";
       } else {
-        // We are in ADD mode -> Send POST request
+     
         await fetch("/api/cars", {
           method: "POST",
           headers: {
@@ -130,7 +130,7 @@
       loadCars();
     });
 
-    // Initial load
+  
     loadCars();
   </script>
 </body>
