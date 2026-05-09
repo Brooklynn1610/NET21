@@ -13,6 +13,5 @@ The trickiest part was figuring out how to handle the **Update** logic. To solve
 
 ## Screenshots
 
-*(Drag and drop your screenshot of the app here)*
+<img width="1512" height="982" alt="Screenshot 2026-05-08 at 8 15 13 PM" src="https://github.com/user-attachments/assets/f43cb221-9828-4b7d-a7b7-3022dfaa30b4" />
 
-*(Drag and drop a screenshot of adding/updating a car here)*
